@@ -1,0 +1,157 @@
+<div class="navbar navbar-expand-sm navbar-lewagon">
+  <div class="container-fluid mx-5">
+    <% if user_signed_in? && (current_user.provider? || current_user.is_owner) %>
+      <%= link_to root_path do %>
+        <%= image_tag "logo_yellow.png", alt: "Logo", width: 150 %>
+      <% end %>
+    <% else %>
+      <%= link_to root_path do %>
+        <%= image_tag "Screenshot 2023-12-07 at 10.06.43.png", alt: "Logo", width: 150 %>
+      <% end %>
+    <% end %>
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+
+      <% if current_user.nil? %>
+          <%# <li class="nav-item active">
+          </li> %>
+          <li class="nav-item dropdown">
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://res.cloudinary.com/dp39nvrov/image/upload/v1701160462/no_profile_pic_mygech.png" />
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Log-in", new_user_session_path, class: "dropdown-item" %>
+              <%= link_to "Sign-up", new_user_registration_path, class: "dropdown-item" %>
+            </div>
+          </li>
+      <% elsif current_user.provider? && current_user.is_owner == false %>
+        <li class="nav-item">
+          <%= link_to 'Manage my bookings', requested_path(current_user), class: "nav-link text-yellow" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Create an activity', new_activity_path, class: "nav-link text-yellow" %>
+        </li>
+        <li class="nav-item dropdown">
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false"} %>
+          <% else %>
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://res.cloudinary.com/dp39nvrov/image/upload/v1701160462/no_profile_pic_mygech.png" />
+          <% end %>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Edit my activities", offered_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Explore all activities", activities_path, class: "dropdown-item" %>
+            <%= link_to "See my bookings as a user", bookings_path, class: "dropdown-item" %>
+            <%= link_to "Register a new property", new_property_path, class: "dropdown-item" %>
+            <%= button_to(
+              "Log Out",
+                          destroy_user_session_path,
+                          class: "dropdown-item",
+                          method: :delete
+                        )
+            %>
+            </div>
+        </li>
+      <% elsif current_user.owner? && current_user.is_provider == false %>
+        <li class="nav-item">
+          <%= link_to 'Become a provider', new_activity_path, class: "nav-link text-yellow" %>
+        </li>
+        <li class="nav-item dropdown">
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false"} %>
+          <% else %>
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://res.cloudinary.com/dp39nvrov/image/upload/v1701160462/no_profile_pic_mygech.png" />
+          <% end %>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "See my properties", properties_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Register a new property", new_property_path, class: "dropdown-item" %>
+            <%= link_to "Explore all activities", activities_path, class: "dropdown-item" %>
+            <%= link_to "See my bookings as a user", bookings_path, class: "dropdown-item" %>
+            <%= button_to(
+              "Log Out",
+                          destroy_user_session_path,
+                          class: "dropdown-item",
+                          method: :delete
+                        )
+            %>
+            </div>
+        </li>
+      <% elsif current_user.owner? && current_user.provider?%>
+        <li class="nav-item">
+          <%= link_to 'Manage my bookings', requested_path(current_user), class: "nav-link text-yellow" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Create an activity', new_activity_path, class: "nav-link text-yellow" %>
+        </li>
+        <li class="nav-item dropdown">
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false"} %>
+          <% else %>
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://res.cloudinary.com/dp39nvrov/image/upload/v1701160462/no_profile_pic_mygech.png" />
+          <% end %>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Edit my activities", offered_path(current_user), class: "dropdown-item" %>
+            <%= link_to "See my properties", properties_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Register a new property", new_property_path, class: "dropdown-item" %>
+            <%= link_to "Explore all activities", activities_path, class: "dropdown-item" %>
+            <%= link_to "See my bookings as a user", bookings_path, class: "dropdown-item" %>
+            <%= button_to(
+              "Log Out",
+                          destroy_user_session_path,
+                          class: "dropdown-item",
+                          method: :delete
+                        )
+            %>
+            </div>
+        </li>
+      <% elsif !current_user.nil? %>
+          <% if params[:property_id].present? %>
+           <li class="nav-item">
+          <%= link_to "Landlord recommendations", property_recommendations_path(params[:property_id]), class: "nav-link text-yellow" %>
+          </li>
+           <li class="nav-item">
+          <%= link_to 'See my bookings', bookings_path(property_id: params[:property_id]), class: "nav-link text-yellow" %>
+          </li>
+          <% else%>
+          <li class="nav-item">
+          <%= link_to 'See my bookings', bookings_path, class: "nav-link text-yellow" %>
+           </li>
+          <% end %>
+        <li class="nav-item dropdown">
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false"} %>
+          <% else %>
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://res.cloudinary.com/dp39nvrov/image/upload/v1701160462/no_profile_pic_mygech.png" />
+          <% end %>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
+            <% if params[:property_id].present? %>
+            <%= link_to "Explore all activties", activities_path(property_id: @property || params[:property_id]), class: "dropdown-item" %>
+            <%else%>
+            <%= link_to "Explore all activities", activities_path, class: "dropdown-item" %>
+            <%end%>
+            <%= link_to "Become a provider", new_activity_path, class: "dropdown-item" %>
+            <%= link_to "Register a property", new_property_path, class: "dropdown-item" %>
+            <%= button_to(
+              "Log Out",
+                          destroy_user_session_path,
+                          class: "dropdown-item",
+                          method: :delete
+                        )
+            %>
+          </div>
+        </li>
+      <% end %>
+
+          <!--li class="nav-item"-->
+          <!--/li-->
+      </ul>
+    </div>
+  </div>
+</div>

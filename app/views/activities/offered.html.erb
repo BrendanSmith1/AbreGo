@@ -1,0 +1,49 @@
+<div class="container py-5">
+<h2>My Activities</h2>
+<div class="cards">
+<% @activities.each do | activity | %>
+  <div class="mb-3">
+    <%= link_to activity_path(activity), class: "text-decoration-none text-dark" do %>
+      <% if !activity.photo.attached?  %>
+        <div class="card-carousel">
+          <%= image_tag "outdoors_activity.jpeg", alt: "text", style: "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))", data: {aos: "zoom-in"}, loading: "lazy" %>
+      <% else %>
+        <div class="card-carousel">
+          <%= cl_image_tag activity.photo.key, height: 300, crop: :fill , alt: "text", style: "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))", data: {aos: "zoom-in"}, loading: "lazy" %>
+      <% end %>
+      <div class="card-carousel-body p-2">
+        <div class="d-flex justify-content-between py-1">
+          <h4> <%= activity.title %> </h4>
+          <p class="text-muted font-weight-normal">
+            <% if activity.reviews.present? %>
+              <% average_rating = activity.reviews.average(:rating).to_f %>
+              <%= "%.1f" % average_rating %>
+              <i class="fas fa-star star-yellow"></i>
+            <% else %>
+                New
+            <% end %>
+          </p>
+        </div>
+          <p> <%= activity.location %> </p>
+          <div class="d-flex justify-content-between align-items-center">
+          <p> <strong><%= activity.price %> € </strong></p>
+          <%= link_to edit_activity_path(activity) do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>
+          <%= link_to activity_path(activity), class:"text-danger", data: {turbo_method: :delete , turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+          <% unless activity.config_time_slot.nil?  %>
+            <%= link_to "Edit time slots", config_time_slot_path(activity.config_time_slot), class: 'btn-dark-green' %>
+          <% else %>
+            <%= link_to "Create time slots", new_activity_config_time_slot_path(activity), class: 'btn-dark-green' %>
+          <% end %>
+          </div>
+        </div>
+        </div>
+    <% end %>
+  </div>
+<% end %>
+</div>
+</div>
+</div>

@@ -1,0 +1,29 @@
+<div class="container my-4">
+  <div class="row">
+    <div class="col-12 col-md-8 offset-lg-2 d-flex align-items-center">
+      <div class="container">
+        <h2 class="text-center">Current configuration for <%= @activity.title %></h2>
+        <ul class="list-group">
+          <% @days_time_slots.each do |days_time_slot| %>
+          <li class="list-group-item d-flex justify-content-between">
+            <%= JSON.parse(days_time_slot.day).join(" ") %> - from <%= days_time_slot.start_time.strftime("%H:%M")%> - <%= days_time_slot.frequency%> times - <%= days_time_slot.interval %> min in between
+            <%= link_to days_time_slot_path(days_time_slot), class:"text-danger", data: {turbo_method: :delete , turbo_confirm: "Are you sure?"} do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </li>
+          <% end %>
+          <li class="list-group-item"> <%= link_to "+ Add new time slots", new_config_time_slot_days_time_slot_path(@config_time_slot), class: "text-decoration-none"  %> </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-12 col-md-8 offset-lg-2">
+      <div class="my-3 d-flex justify-content-center">
+        <%= link_to "Done", create_time_slot_path(:config_time_slot_id => @config_time_slot.id), data: { 'turbo-method' => :post }, class: "btn-dark-green" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+    </div>
+  </div>
+</div>

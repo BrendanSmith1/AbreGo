@@ -1,0 +1,35 @@
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+@import "config/bootstrap_variables";
+
+// External libraries
+@import "bootstrap";
+@import "font-awesome";
+
+// Your CSS partials
+@import "components/index";
+@import "pages/index";
+
+
+.user-theme {
+  .btn-dark-green {
+    background-color: $dark-green;
+  }
+
+  .btn-dark-green:hover {
+    background-color: $yellow;
+    color: $dark-green;
+  }
+
+  .navbar {
+    background-color: $yellow;
+    color: $dark-green;
+  }
+
+  .text-yellow {
+    color: $dark-green;
+    font-family: $headers-font;
+  }
+
+}

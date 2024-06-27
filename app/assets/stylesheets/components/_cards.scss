@@ -1,0 +1,187 @@
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-large {
+  height: 50vh;
+  max-height: 400px;
+}
+
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  p, h4 {
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.cards-activities {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  p, h4 {
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .cards-activities {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .cards-activities {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cards-activities {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .cards-activities {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .cards-activities {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+
+// .card img {
+//   width: 100%; /* Ensure the image takes the full width of its container */
+//   height: 180px; /* Set a fixed height for the image */
+//   object-fit: cover; /* Scale the image as large as possible while preserving its aspect ratio */
+//   object-position: center;
+// }
+
+.card-category img {
+  width: 100%; /* Ensure the image takes the full width of its container */
+  height: 180px; /* Set a fixed height for the image */
+  object-fit: cover; /* Scale the image as large as possible while preserving its aspect ratio */
+  object-position: center;
+  border-radius: 5px;
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  overflow: hidden;
+  // height: 280px;
+}
+
+.card-carousel {
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+
+  &:hover {
+    box-shadow: 0 0 8px rgba(0,0,0,0.75);
+  }
+}
+
+.card-carousel img {
+  width: 100%; /* Ensure the image takes the full width of its container */
+  height: 180px; /* Set a fixed height for the image */
+  object-fit: cover; /* Scale the image as large as possible while preserving its aspect ratio */
+  object-position: center;
+}
+
+.card-header {
+  color: $yellow;
+  background-color: $dark-green;
+}
+
+.carousel-inner {
+  padding: 5px;
+}
+
+.card-select {
+  box-shadow: 0 0 12px rgba(0,0,0,0.75);
+  border: 1px solid $dark-green;
+}
+
+.card-property {
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  margin-bottom: 8px;
+  margin-top: 8px;
+  text-decoration: none;
+}
+
+
+.cards-recommend {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  p, h4 {
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}

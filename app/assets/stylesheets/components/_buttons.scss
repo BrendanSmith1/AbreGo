@@ -1,0 +1,107 @@
+// .btn-green {
+//   color: white;
+//   padding: 8px 24px;
+//   border-radius: 4px;
+//   background: #68b0ab;
+//   transition: background 0.3s ease;
+// }
+
+// .btn-green :hover {
+//   color: white;
+//   padding: 8px 24px;
+//   border-radius: 4px;
+//   background: #218679;
+//   transition: background 0.3s ease;
+
+// .btn-grey {
+//   color: white;
+//   padding: 8px 24px;
+//   border-radius: 4px;
+//   background: #8fc0a9;
+//   transition: background 0.3s ease;
+// }
+
+
+// .btn-cancel {
+//   color: white;
+//   padding: 8px 24px;
+//   border-radius: 4px;
+//   background: #6a757e;
+//   transition: background 0.3s ease;
+// }
+
+
+
+.btn-yellow {
+  color: $gray;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $yellow;
+  transition: background 0.3s ease;
+}
+
+
+.btn-yellow:hover {
+  background: $dark-green;
+  color: white;
+}
+
+
+.btn-light-green {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $light-green;
+  transition: background 0.3s ease;
+}
+
+.btn-light-green:hover {
+  background: #375c42;
+  color: white;
+}
+
+
+.btn-lighter-green {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $lighter-green;
+  transition: background 0.3s ease;
+}
+
+.btn-lighter-green:hover {
+  background: #375c42;
+  color: white;
+}
+
+
+.btn-dark-green {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $dark-green;
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+
+
+.btn-dark-green:hover {
+  background: $yellow;
+  color: $gray;
+}
+
+.btn-cancel {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $dark-green;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  border: 2px outset grey;
+
+  &:hover {
+    background: $yellow;
+    color: $gray;
+  }
+
+}
